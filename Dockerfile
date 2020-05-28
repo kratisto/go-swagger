@@ -1,6 +1,6 @@
 FROM golang:1.14.3-alpine3.11 as builder
 ADD . .
-RUN GO111MODULE=on go build -o swagger-musl .
+RUN GO111MODULE=off go build -o swagger-musl .
 
 FROM golang:1.14.3-alpine3.11
 
