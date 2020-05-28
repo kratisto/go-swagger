@@ -1,8 +1,8 @@
-FROM golang:alpine as builder
+FROM golang:1.14.3-alpine3.11 as builder
 ADD . .
 RUN GO111MODULE=on go build -o swagger-musl .
 
-FROM golang:alpine
+FROM golang:1.14.3-alpine3.11
 
 LABEL maintainer="Ivan Porto Carrero <ivan@flanders.co.nz> (@casualjim)"
 
