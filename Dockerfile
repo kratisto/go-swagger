@@ -16,7 +16,7 @@ RUN apk --no-cache add ca-certificates shared-mime-info mailcap git build-base &
 
 
 COPY --from=builder /app/swagger-musl /usr/bin/swagger
-ADD ./templates/ /templates/contrib/
+COPY --from=builder /app/templates/ /templates/contrib/
 
 ENTRYPOINT ["/usr/bin/swagger"]
 CMD ["--help"]
