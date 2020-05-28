@@ -1,4 +1,5 @@
 FROM golang:1.14.3-alpine3.11 as builder
+WORKDIR /app
 ADD . .
 RUN GO111MODULE=off go build -o swagger-musl .
 
@@ -14,7 +15,7 @@ RUN apk --no-cache add ca-certificates shared-mime-info mailcap git build-base &
   go get -u golang.org/x/net/context/ctxhttp
 
 
-COPY --from=builder ./swagger-musl /usr/bin/swagger
+COPY --from=builder /app/swagger-musl /usr/bin/swagger
 ADD ./templates/ /templates/contrib/
 
 ENTRYPOINT ["/usr/bin/swagger"]
