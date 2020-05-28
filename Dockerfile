@@ -1,5 +1,5 @@
 FROM golang:alpine as builder
-
+ADD . .
 RUN go build -o swagger-musl .
 
 FROM golang:alpine
